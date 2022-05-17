@@ -44,9 +44,9 @@ a{
     margin: 1px;
 }
 
-.pantalla{
+#pantalla{
     display: grid;
-    grid-template-columns: 35% 55% 10%;
+    grid-template-columns: 35% 45% 20%;
     padding: 5px; 
     border: solid 0.5px black;
     background-color: #353739;
