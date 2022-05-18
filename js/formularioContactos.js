@@ -1,13 +1,4 @@
 
-// let busqueda = document.getElementById("input_busqueda");
-// busqueda.addEventListener("keydown", evento);
-
-// function evento(){
-//     let busqueda_valor = busqueda.value;
-//     let contenedor = document.getElementById("p_codigo");
-//     contenedor.innerHTML = "<h6>"+ busqueda_valor + "</h6>"; 
-// }
-
 
 let nombre = document.getElementById("nombre");
 nombre.addEventListener("keyup", validar_nombre);

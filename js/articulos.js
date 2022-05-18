@@ -9,24 +9,28 @@ class Articulo{
     }
 }
 
+function limpiar_pantalla(){
+
+    document.getElementById("codigo").innerHTML = "";
+    document.getElementById("descripcion").innerHTML = "";
+    document.getElementById("stock").innerHTML = "";
+}
+
 function agregar_articulo(){
 
-    let codigo = document.getElementById("cod_carga");
-    let descripcion = document.getElementById("desc_carga");
-    let unidades = document.getElementById("num_carga");
-    
-    let cod = codigo.value;
-    let desc = descripcion.value;
-    let num = unidades.value;
+    let codigo = document.getElementById("cod_carga").value;
+    let descripcion = document.getElementById("desc_carga").value;
+    let unidades = document.getElementById("num_carga").value;
 
-    const NUEVO_ARTICULO = new Articulo(cod, desc, num);
+
+    const NUEVO_ARTICULO = new Articulo(codigo, descripcion, unidades);
     ARRAY_ARTICULOS.push(NUEVO_ARTICULO)
-    localStorage.setItem(cod, JSON.stringify(ARRAY_ARTICULOS));
+    localStorage.setItem("articulos", JSON.stringify(ARRAY_ARTICULOS));
 
 }
 
 function cargar_articulosLS() {
-    return JSON.parse(localStorage.getItem("TH1222"));
+    return JSON.parse(localStorage.getItem("articulos"));
 }
 
 function listar_articulos(){
@@ -35,7 +39,7 @@ function listar_articulos(){
     let stock = document.getElementById("stock");
 
     let articulos = cargar_articulosLS();
-    
+    limpiar_pantalla()
     for (const art of articulos){
         
         let contenido_cod = document.createElement('h6');
@@ -53,32 +57,34 @@ function listar_articulos(){
     }
 }
 
-function limpiar_pantalla(){
+function filtrar(){
+    let busqueda_art = document.getElementById("input_busqueda").value;
+    let codigo = document.getElementById("codigo");
+    let descripcion = document.getElementById("descripcion");
+    let stock = document.getElementById("stock");
 
-    const codigo = document.getElementById("codigo");
-    let h_codigo = document.querySelector("h6");
-    codigo.removeChild(h_codigo);
+    let articulos = cargar_articulosLS();
+    limpiar_pantalla()
 
-    const descripcion = document.querySelector("desc");
-    let h_descripcion = document.querySelector("h6");
-    descripcion.removeChild(h_descripcion);
+    for (const art of articulos){
 
-    const stock = document.getElementById("stock");
-    let h_stock = document.querySelector("h6");
-    stock.removeChild(h_stock);
- 
+        if( art.codigo == busqueda_art){
         
-    // while(true){
-    //     try {
-    //       
-
+            let contenido_cod = document.createElement('h6');
+            let contenido_desc = document.createElement('h6');
+            let contenido_stock = document.createElement('h6');
             
+            contenido_cod.textContent = art.codigo;
+            contenido_desc.textContent = art.detalle;
+            contenido_stock.textContent = art.unidad;
 
-    //     } catch {
-    //         console.log("nada que borar")
-    //         break;
-    //     }
+            codigo.appendChild(contenido_cod);
+            descripcion.appendChild(contenido_desc);
+            stock.appendChild(contenido_stock);
         
-    // }
-    
+        }
+
+    }
 }
+
+

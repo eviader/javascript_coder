@@ -39,9 +39,22 @@ a{
 
 .marco{
     display: grid;
-    grid-template-rows: 80% 20%;
+    grid-template-rows: 5% 75% 20%;
     border: solid black 1px;
     margin: 1px;
+}
+
+#titulo{
+    display: grid;
+    grid-template-columns: 35% 45% 20%;
+    margin: 2px 2px 0px 2px ;
+}
+
+#titulo h6{
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    
 }
 
 #pantalla{
@@ -81,6 +94,8 @@ a{
 }
 
 .marco_dos{
+    justify-items: center;
+    color: white;
     border: solid black 1px;
     margin: 1px;
     background-color: #353739;

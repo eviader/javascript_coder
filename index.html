@@ -20,11 +20,21 @@
     </header>
 
     <main class="main p-1"> 
+
+       
+
         <div class="marco">
+          
+          <div id="titulo">
+            <div><h6>Codigo</h6></div>
+            <div><h6>Descripcion</h6></div>
+            <div><h6>Unidades</h6></div>
+          </div>
+
           <div id="pantalla">
-            <div id="codigo"><h5>Codigo</h5></div>
-            <div id="descripcion"><h5>Descripcion</h5></div>
-            <div id="stock"><h5>Stock</h5></div>
+            <div id="codigo"></div>
+            <div id="descripcion"></div>
+            <div id="stock"></div>
           </div>
 
           <div class="buscador">
@@ -33,17 +43,19 @@
               <input id="input_busqueda" type="text">
               <button id="btn_por_articulo" type="button" class="btn btn-secondary m-2">Buscar</button>
               <button id="btn_listar" type="button" class="btn btn-secondary">Listar Stock</button>
-              <button id="limpiar_pantalla" type="button" class="btn btn-secondary m-2">Limpiar Pantalla</button>
-
+              <button id="limpiar" type="button" class="btn btn-secondary m-2">Limpiar Pantalla</button>
             </div>
           </div>
-        
         </div>
+        
         <div class="marco_dos"> 
+          <h6>Codigo Articulo</h6>
           <input id="cod_carga" type="text" alt="carga_cod">
+          <h6>Descripocion</h6>
           <input id="desc_carga" type="text" alt="carga_des">
+          <h6>Cantidad unidades</h6>
           <input id="num_carga" type="number" alt="carga_unides">
-          <button id="btn_funcion" type="submit">Cargar</button>
+          <button id="btn_funcion" type="button" class="btn btn-secondary m-2">Cargar</button>
         </div>
     </main>
 

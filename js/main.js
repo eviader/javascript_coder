@@ -6,8 +6,12 @@ document.getElementById("btn_listar").onclick = function(){
     listar_articulos();
 }
 
-document.getElementById("limpiar_pantalla").onclick = function(){
+document.getElementById("limpiar").onclick = function(){
     limpiar_pantalla();
+}
+
+document.getElementById("btn_por_articulo").onclick = function(){
+    filtrar();
 }
 
 cargar_articulosLS();
