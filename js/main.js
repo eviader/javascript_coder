@@ -1,3 +1,9 @@
+
+const botonLimpiar = document.querySelector("#limpiar");
+botonLimpiar.addEventListener("mouseover", (evento) =>{
+    alertas("Limpia los articulos listados");
+});
+
 document.getElementById("btn_funcion").onclick = function(){
     agregar_articulo();
 }
@@ -15,3 +21,4 @@ document.getElementById("btn_por_articulo").onclick = function(){
 }
 
 cargar_articulosLS();
+

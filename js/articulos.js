@@ -5,7 +5,7 @@ class Articulo{
     constructor(codigo, detalle, unidad){
         this.codigo =  codigo;
         this.detalle = detalle;
-        this.unidad =  unidad;
+        this.unidad =  Number(unidad);
     }
 }
 
@@ -17,16 +17,20 @@ function limpiar_pantalla(){
 }
 
 function agregar_articulo(){
-
     let codigo = document.getElementById("cod_carga").value;
     let descripcion = document.getElementById("desc_carga").value;
     let unidades = document.getElementById("num_carga").value;
 
+    codigo === "" && alertas("Ingrese un codigo");
+    descripcion === "" && alertas("Ingrese una descripcion");
+    unidades <= 0 && alertas("Se carga el producto con valor de unidades 0");
 
-    const NUEVO_ARTICULO = new Articulo(codigo, descripcion, unidades);
-    ARRAY_ARTICULOS.push(NUEVO_ARTICULO)
-    localStorage.setItem("articulos", JSON.stringify(ARRAY_ARTICULOS));
 
+    if (codigo && descripcion !== ""){
+        const NUEVO_ARTICULO = new Articulo(codigo, descripcion, unidades);
+        ARRAY_ARTICULOS.push(NUEVO_ARTICULO)
+        localStorage.setItem("articulos", JSON.stringify(ARRAY_ARTICULOS));  
+    }
 }
 
 function cargar_articulosLS() {
@@ -40,6 +44,11 @@ function listar_articulos(){
 
     let articulos = cargar_articulosLS();
     limpiar_pantalla()
+
+
+    //Aca controlamos que el contenido de storage no sea null
+    articulos === null && alertas("No hay productos cargados");
+    
     for (const art of articulos){
         
         let contenido_cod = document.createElement('h6');
@@ -81,10 +90,16 @@ function filtrar(){
             codigo.appendChild(contenido_cod);
             descripcion.appendChild(contenido_desc);
             stock.appendChild(contenido_stock);
-        
         }
-
     }
+}
+
+function alertas(mensaje){
+    Toastify(
+        {text: mensaje, 
+        gravity: "bottom", style: {
+        background: "#a4b798",
+        }, duration: 3000}).showToast();
 }
 
 
