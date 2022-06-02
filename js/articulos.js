@@ -14,6 +14,7 @@ function limpiar_pantalla(){
     document.getElementById("codigo").innerHTML = "";
     document.getElementById("descripcion").innerHTML = "";
     document.getElementById("stock").innerHTML = "";
+    document.getElementById("menu").innerHTML = "";
 }
 
 function agregar_articulo(){
@@ -23,7 +24,8 @@ function agregar_articulo(){
 
     codigo === "" && alertas("Ingrese un codigo");
     descripcion === "" && alertas("Ingrese una descripcion");
-    unidades <= 0 && alertas("Se carga el producto con valor de unidades 0");
+    unidades <= 0 && alertas("Se cargara el producto con valor de unidades 0");
+
 
 
     if (codigo && descripcion !== ""){
@@ -35,7 +37,7 @@ function agregar_articulo(){
 
 function cargar_articulosLS() {
     return JSON.parse(localStorage.getItem("articulos"));
-}
+} 
 
 function listar_articulos(){
     let codigo = document.getElementById("codigo");
@@ -46,7 +48,7 @@ function listar_articulos(){
     limpiar_pantalla()
 
 
-    //Aca controlamos que el contenido de storage no sea null
+    //controlamos que el contenido de storage no sea null
     articulos === null && alertas("No hay productos cargados");
     
     for (const art of articulos){
@@ -54,6 +56,7 @@ function listar_articulos(){
         let contenido_cod = document.createElement('h6');
         let contenido_desc = document.createElement('h6');
         let contenido_stock = document.createElement('h6');
+        menu.innerHTML = "<img src='img/eliminar.png' alt='foto_eliminar'>";
         
         contenido_cod.textContent = art.codigo;
         contenido_desc.textContent = art.detalle;
@@ -67,6 +70,8 @@ function listar_articulos(){
 }
 
 function filtrar(){
+
+    let menu =  document.getElementById("menu");
     let busqueda_art = document.getElementById("input_busqueda").value;
     let codigo = document.getElementById("codigo");
     let descripcion = document.getElementById("descripcion");
@@ -90,6 +95,8 @@ function filtrar(){
             codigo.appendChild(contenido_cod);
             descripcion.appendChild(contenido_desc);
             stock.appendChild(contenido_stock);
+        }else{
+            alertas("No se han encontrado articulos");
         }
     }
 }
@@ -103,3 +110,8 @@ function alertas(mensaje){
 }
 
 
+function selector_div(){
+    div_articulo = document.querySelector("div");
+
+
+}

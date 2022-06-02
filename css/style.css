@@ -53,8 +53,7 @@ a{
 #titulo h6{
     width: 100%;
     background-color: white;
-    text-align: center;
-    
+    text-align: center;   
 }
 
 #pantalla{
@@ -65,7 +64,16 @@ a{
     background-color: #353739;
 }
 
-#codigo, #descripcion, #stock{
+#menu_stock{
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+#menu_stock img{
+    width: 20%;
+    height: auto;
+}
+
+#codigo, #descripcion, #menu_stock{
     background-color: white;
     border: black 1px solid;
     text-align: center;
@@ -116,5 +124,4 @@ footer #img{
     position: relative;
     height: auto;
     width: 5%;
-
 }
