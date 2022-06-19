@@ -102,11 +102,18 @@ a{
 }
 
 .marco_dos{
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     color: white;
     border: solid black 1px;
     margin: 1px;
     background-color: #353739;
+}
+
+.marco_dos h3{
+    text-align: center;
+    margin: 10px;
 }
 
 

@@ -21,4 +21,3 @@ document.getElementById("btn_por_articulo").onclick = function(){
 }
 
 cargar_articulosLS();
-

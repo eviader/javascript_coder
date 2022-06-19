@@ -14,7 +14,6 @@ function limpiar_pantalla(){
     document.getElementById("codigo").innerHTML = "";
     document.getElementById("descripcion").innerHTML = "";
     document.getElementById("stock").innerHTML = "";
-    document.getElementById("menu").innerHTML = "";
 }
 
 function agregar_articulo(){
@@ -24,20 +23,20 @@ function agregar_articulo(){
 
     codigo === "" && alertas("Ingrese un codigo");
     descripcion === "" && alertas("Ingrese una descripcion");
-    unidades <= 0 && alertas("Se cargara el producto con valor de unidades 0");
-
-
+    unidades <= 0 && alertas("Se cargara el producto con valor de unidades en 0");
 
     if (codigo && descripcion !== ""){
         const NUEVO_ARTICULO = new Articulo(codigo, descripcion, unidades);
         ARRAY_ARTICULOS.push(NUEVO_ARTICULO)
-        localStorage.setItem("articulos", JSON.stringify(ARRAY_ARTICULOS));  
+        localStorage.setItem("articulos", JSON.stringify(ARRAY_ARTICULOS));
+        alertas("Carga exitosa!"); 
     }
 }
 
 function cargar_articulosLS() {
     return JSON.parse(localStorage.getItem("articulos"));
-} 
+}
+
 
 function listar_articulos(){
     let codigo = document.getElementById("codigo");
@@ -56,7 +55,6 @@ function listar_articulos(){
         let contenido_cod = document.createElement('h6');
         let contenido_desc = document.createElement('h6');
         let contenido_stock = document.createElement('h6');
-        menu.innerHTML = "<img src='img/eliminar.png' alt='foto_eliminar'>";
         
         contenido_cod.textContent = art.codigo;
         contenido_desc.textContent = art.detalle;
@@ -65,13 +63,10 @@ function listar_articulos(){
         codigo.appendChild(contenido_cod);
         descripcion.appendChild(contenido_desc);
         stock.appendChild(contenido_stock);
-
     }
 }
 
 function filtrar(){
-
-    let menu =  document.getElementById("menu");
     let busqueda_art = document.getElementById("input_busqueda").value;
     let codigo = document.getElementById("codigo");
     let descripcion = document.getElementById("descripcion");
@@ -107,11 +102,4 @@ function alertas(mensaje){
         gravity: "bottom", style: {
         background: "#a4b798",
         }, duration: 3000}).showToast();
-}
-
-
-function selector_div(){
-    div_articulo = document.querySelector("div");
-
-
 }
